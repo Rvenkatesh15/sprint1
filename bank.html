@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit or Withdraw</title>
+    <style>
+        .img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deposit or Withdraw</h1><br>
+    <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721121.png" class="img" id="img1"/>
+        <img src="https://t4.ftcdn.net/jpg/04/37/10/25/360_F_437102574_EjzC92IdHsvWJJv1sN8FYWwxRHc57EYC.jpg" class="img" id="img2"/>
+
+    </div>
+    <script>
+        document.getElementById('img1').addEventListener('click',()=>{
+            window.open('deposit.html','_self');
+        })
+        document.getElementById("img2").addEventListener('click',()=>{
+            window.open('withdraw.html','_self')
+        })
+
+    </script>
+
+    
+</body>
+</html>

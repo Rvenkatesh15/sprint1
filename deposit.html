@@ -1,0 +1,253 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deposit</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Account Deposit</h1>
+        <div id="message" class="message"></div>
+        <form id="depositForm">
+            <label for="accountNumber">Enter Account Number:</label>
+            <input type="text" id="accountNumber" name="accountNumber" required><br><br>
+            <label for="depositAmount">Enter Amount to Deposit:</label>
+            <input type="number" id="depositAmount" name="depositAmount" required>
+            <button type="submit">Deposit</button>
+        </form>
+        <div id="accountInfo" class="hidden">
+            <h2>Account Number: <span id="displayAccountNumber"></span></h2>
+            <h2>Updated Balance: <span id="updatedBalance"></span></h2>
+        </div>
+    </div>
+    <script>
+
+let accounts = {
+    '12345': 5000,
+    '67890': 3000
+};
+
+document.getElementById('depositForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const accountNumber = document.getElementById('accountNumber').value;
+    const depositAmount = parseFloat(document.getElementById('depositAmount').value);
+    const message = document.getElementById('message');
+    const accountInfo = document.getElementById('accountInfo');
+    const displayAccountNumber = document.getElementById('displayAccountNumber');
+    const updatedBalance = document.getElementById('updatedBalance');
+
+    
+    message.textContent = '';
+
+   
+    if (isNaN(depositAmount) || depositAmount <= 0) {
+        message.textContent = 'Please enter a valid deposit amount.';
+        return;
+    }
+
+    
+    if (!accounts.hasOwnProperty(accountNumber)) {
+        message.textContent = 'Account number not found.';
+        return;
+    }
+
+   
+    accounts[accountNumber] += depositAmount;
+
+    
+    displayAccountNumber.textContent = accountNumber;
+    updatedBalance.textContent = accounts[accountNumber].toFixed(2);
+    accountInfo.classList.remove('hidden');
+});
+    </script>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deposit</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .message {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: #666666;
+            font-size: 16px;
+        }
+
+        input[type=text], input[type=number] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #accountInfo {
+            margin-top: 20px;
+        }
+
+        #displayAccountNumber, #updatedBalance {
+            color: #333333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Account Deposit</h1>
+        <div id="message" class="message"></div>
+        <form id="depositForm">
+            <label for="accountNumber">Enter Account Number:</label>
+            <input type="text" id="accountNumber" name="accountNumber" required>
+            <label for="depositAmount">Enter Amount to Deposit:</label>
+            <input type="number" id="depositAmount" name="depositAmount" required>
+            <button type="submit">Deposit</button>
+        </form>
+        <div id="accountInfo" class="hidden">
+            <h2>Account Number: <span id="displayAccountNumber"></span></h2>
+            <h2>Updated Balance: <span id="updatedBalance"></span></h2>
+        </div>
+    </div>
+    <script>
+        // Mock accounts with balances
+        let accounts = {
+            '12345': 5000,
+            '67890': 3000
+        };
+
+        document.getElementById('depositForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const accountNumber = document.getElementById('accountNumber').value;
+            const depositAmount = parseFloat(document.getElementById('depositAmount').value);
+            const message = document.getElementById('message');
+            const accountInfo = document.getElementById('accountInfo');
+            const displayAccountNumber = document.getElementById('displayAccountNumber');
+            const updatedBalance = document.getElementById('updatedBalance');
+
+            // Clear previous messages
+            message.textContent = '';
+
+            // Validate the deposit amount
+            if (isNaN(depositAmount) || depositAmount <= 0) {
+                message.textContent = 'Please enter a valid deposit amount.';
+                return;
+            }
+
+            // Validate the account number
+            if (!accounts.hasOwnProperty(accountNumber)) {
+                message.textContent = 'Account number not found.';
+                return;
+            }
+
+            // Update the account balance
+            accounts[accountNumber] += depositAmount;
+
+            // Display the account info and updated balance
+            displayAccountNumber.textContent = accountNumber;
+            updatedBalance.textContent = accounts[accountNumber].toFixed(2);
+            accountInfo.classList.remove('hidden');
+        });
+    </script>
+</body>
+
+</html>
